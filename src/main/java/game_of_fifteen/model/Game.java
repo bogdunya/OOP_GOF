@@ -2,7 +2,6 @@ package game_of_fifteen.model;
 
 import game_of_fifteen.model.event.*;
 import game_of_fifteen.model.field.Field;
-import game_of_fifteen.model.field.cell_objects.Cabbage;
 import game_of_fifteen.model.field.cell_objects.Tile;
 import game_of_fifteen.model.field_formation.FieldFormation;
 import org.jetbrains.annotations.NotNull;

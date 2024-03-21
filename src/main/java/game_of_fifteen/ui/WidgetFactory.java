@@ -3,9 +3,7 @@ package game_of_fifteen.ui;
 import game_of_fifteen.model.field.Cell;
 import game_of_fifteen.model.field.CellObject;
 import game_of_fifteen.model.field.MobileCellObject;
-import game_of_fifteen.model.field.cell_objects.Cabbage;
 import game_of_fifteen.model.field.cell_objects.Tile;
-import game_of_fifteen.model.field.cell_objects.Wall;
 import game_of_fifteen.ui.cell.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,16 +28,6 @@ public class WidgetFactory {
             item.addItem(tileWidget);
         }
 
-        if (cell instanceof Cell && mobileCellObject == null) {
-            if (cell.getCellObject() instanceof Wall) {
-                CellItemWidget wallWidget = create(cell.getCellObject());
-                item.addItem(wallWidget);
-            } else if (cell.getCellObject() instanceof Cabbage) {
-                CellItemWidget cabbageWidget = create(cell.getCellObject());
-                item.addItem(cabbageWidget);
-            }
-        }
-
         cells.put(cell, item);
         return item;
     }
@@ -60,8 +48,6 @@ public class WidgetFactory {
             Color color = Color.BLUE;
             usedColors.add(color);
             createdWidget = new TileWidget((Tile) cellObject, color);
-        } else if (cellObject instanceof Wall) {
-            createdWidget = new WallWidget((Wall) cellObject);
         } else {
             throw new IllegalArgumentException();
         }

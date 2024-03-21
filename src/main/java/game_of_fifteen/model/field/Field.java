@@ -2,9 +2,7 @@ package game_of_fifteen.model.field;
 
 import game_of_fifteen.model.Direction;
 import game_of_fifteen.model.Point;
-import game_of_fifteen.model.field.cell_objects.Cabbage;
 import game_of_fifteen.model.field.cell_objects.Tile;
-import game_of_fifteen.model.field_formation.SmallFieldFormation;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -32,21 +30,11 @@ public class Field {
 
     /**
      * Конструктор
-     *
-     * @param width        ширина. Должна быть > 0.
-     * @param height       высота. Должна быть > 0.
-     * @param pointGabbage координата ячейки с капустой.
-     * @throws IllegalArgumentException если ширина, высота или координата ячейки переданы некорректные.
      */
-    public Field(@NotNull Point pointGabbage, int typeOfField) {
+    public Field(int typeOfField) {
         if (width <= 0) throw new IllegalArgumentException("Field width must be more than 0");
         if (height <= 0) throw new IllegalArgumentException("Field height must be more than 0");
-        if (pointGabbage.getX() >= width || pointGabbage.getY() >= height) {
-            throw new IllegalArgumentException("exit point coordinates must be in range from 0 to weight or height");
-        }
         buildField(typeOfField);
-//        this.gabbage = (Gabbage) getCell(pointGabbage);
-//        ((Gabbage) getCell(pointGabbage)).addExitCellActionListener(new ExitCellObserver());
     }
 
     /**
@@ -60,9 +48,21 @@ public class Field {
                 Cell cell = new Cell();
                 if (x > 0) cell.setNeighborCells(getCell(p.to(Direction.WEST, 1)), Direction.WEST);
                 if (y > 0) cell.setNeighborCells(getCell(p.to(Direction.NORTH, 1)), Direction.NORTH);
+
+                cells.put(p, cell);
+
+            }
+        }
+
+        for (int y = 0; y < height; ++y) {
+            for (int x = 0; x < width; ++x) {
+                Point p = new Point(x, y);
+                Cell cell = cells.get(p);
                 switch (typeOfField) {
                     case 1:
                         //сюда дописать дописывать соседей для типа игры 1
+                        if(x==0) cell.setNeighborCells(getCell(new Point(width-1,y)), Direction.WEST);
+                        if(x==width-1) cell.setNeighborCells(getCell(new Point(0,y)), Direction.EAST);
                         break;
                     case 2:
                         //сюда дописать дописывать соседей для типа игры 2
@@ -120,16 +120,6 @@ public class Field {
         }
         //System.out.println("Список по порядку: "+result);
         return result;
-    }
-
-    public Cabbage getCabbageOnField() {
-        for (var i : cells.entrySet()) {
-            if (i.getValue().getCellObject() instanceof Cabbage) {
-                CellObject cellObject = i.getValue().getCellObject();
-                if (cellObject instanceof Cabbage) return (Cabbage) cellObject;
-            }
-        }
-        return null;
     }
 
     @Override

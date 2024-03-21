@@ -4,7 +4,8 @@ import game_of_fifteen.model.Game;
 import game_of_fifteen.model.GameStatus;
 import game_of_fifteen.model.event.GameActionEvent;
 import game_of_fifteen.model.event.GameActionListener;
-import game_of_fifteen.model.field_formation.SmallFieldFormation;
+import game_of_fifteen.model.field_formation.ClassicFieldFormationRandom;
+import game_of_fifteen.model.field_formation.ClassicFieldFormation_1test;
 import game_of_fifteen.ui.FieldWidget;
 import game_of_fifteen.ui.WidgetFactory;
 import org.jetbrains.annotations.NotNull;
@@ -43,7 +44,7 @@ public class Main {
 
         private void startGame() {
             widgetFactory = new WidgetFactory();
-            game = new Game(new SmallFieldFormation());
+            game = new Game(new ClassicFieldFormationRandom());
 
             game.addGameActionListener(new GameController());
 
@@ -88,11 +89,13 @@ public class Main {
                     SwingUtilities.invokeLater(() -> {
                         String message = "Вы собрали пятнашки!";
                         String[] options = {"OK"};
-                        JOptionPane.showOptionDialog(GamePanel.this, message, "Игра окончена", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                        int result = JOptionPane.showOptionDialog(GamePanel.this, message, "Игра окончена", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                        // Проверяем, нажата ли кнопка "OK"
+                        if (result == 0) {
+                            startGame();
+                        }
                     });
 
-                    // Перерисовываем панель
-                    repaint();
                 }
             }
         }

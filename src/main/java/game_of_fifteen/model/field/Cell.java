@@ -76,13 +76,8 @@ public class Cell {
 
     /**
      * Установить ячейку соседней.
-     * @param neighborCell соседняя ячейка.
-     * @param direction направление.
-     * @throws IllegalArgumentException если передняя ячейка не может быть соседней.
      */
     void setNeighborCells(@NotNull Cell neighborCell, @NotNull Direction direction) {
-        if (neighborCells == this || neighborCells.containsKey(direction) || neighborCells.containsValue(neighborCell))
-            throw new IllegalArgumentException();
         neighborCells.put(direction, neighborCell);
         if (neighborCell.getNeighborCell(direction.getOppositeDirection()) == null) {
             neighborCell.setNeighborCells(this, direction.getOppositeDirection());

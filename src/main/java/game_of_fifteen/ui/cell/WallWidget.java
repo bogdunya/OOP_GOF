@@ -1,6 +1,5 @@
 package game_of_fifteen.ui.cell;
 
-import game_of_fifteen.model.field.cell_objects.Wall;
 import game_of_fifteen.ui.utils.ImageUtils;
 
 import javax.imageio.ImageIO;
@@ -10,13 +9,6 @@ import java.io.File;
 import java.io.IOException;
 
 public class WallWidget extends CellItemWidget {
-
-    private final Wall wall;
-
-    public WallWidget(Wall wall) {
-        super();
-        this.wall = wall;
-    }
 
     @Override
     protected BufferedImage getImage() {

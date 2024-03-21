@@ -13,7 +13,7 @@ public abstract class FieldFormation {
      * @return поле.
      */
     public Field buildField() {
-        Field field = new Field(new Point(3, 3), 0);
+        Field field = new Field(1);
 
         addTile(field);
 
@@ -37,7 +37,5 @@ public abstract class FieldFormation {
      * Добавить костяшку и стены на поле.
      */
     protected abstract void addTile(@NotNull Field field);
-    protected abstract void addWalls(@NotNull Field field);
-
 
 }
