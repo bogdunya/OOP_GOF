@@ -47,7 +47,13 @@ public class Game {
         setTile(gameField.getTilesOnField());
 
         //gameField.getTilesOnField().addTileActionListener(new TileObserver()); //Возможно это важная строчка!
+        List<Tile> tiles = gameField.getTilesOnField();
+        TileObserver observer = new TileObserver(); // Создайте экземпляр вашего слушателя
 
+// Добавьте слушателя к каждому объекту Tile в списке
+        for (Tile tile : tiles) {
+            tile.addTileActionListener(observer);
+        }
 
     }
 
@@ -107,17 +113,47 @@ public class Game {
      * Определить исход игры.
      * @return статус игры.
      */
+    /**
+     * Classic variation:
+     * <pre>
+     * 1 2 3
+     * 4 5 6
+     * 7 8 -
+     * </pre>
+     */
     private GameStatus determineOutcomeGame() {
         GameStatus result = GameStatus.GAME_IS_ON;
 
-        List<Tile> tileOnField = gameField.getTilesOnField();
-        Cabbage cabbage = gameField.getCabbageOnField();
+        int height = gameField.getHeight();
+        int width = gameField.getWidth();
+
+        int tileValue = 1;
+        System.out.println("не ЗАШЁЛ");
+        if(gameField.getCell(new Point(height-1,width-1)).getCellObject()==null){
+            System.out.println("ЗАШЁЛ");
+            boolean Win = false;
+            for (int y = 0; y < gameField.getHeight(); ++y) {
+                for (int x = 0; x < gameField.getWidth(); ++x) {
+                    if (tileValue <= 15) {
+                        Point p = new Point(x, y);
+                        if (gameField.getCell(new Point(x, y)).getCellObject().getNumber() !=tileValue){
+                            Win = true;
+                        }
+                            tileValue++;
+                    }
+                }
+            }
+            if (Win == false){
+                result = GameStatus.WIN;
+            }
+        }
 
 //        if (goatOnField.getNumberMoves() <= 0) {
 //            result = GameStatus.GOAT_NOT_HAVE_MOVES;
 //        } else if (cabbage.getPosition() == goatOnField.getPosition()) {
 //            result = GameStatus.WIN;
 //        }
+
 
         return result;
     }
@@ -170,7 +206,6 @@ public class Game {
 
     /**
      * Оповестить слушателей, что коза переместилась.
-     * @param goat коза, которая переместилась.
      */
 
     public void fireTileIsMoved(@NotNull Tile tile) {

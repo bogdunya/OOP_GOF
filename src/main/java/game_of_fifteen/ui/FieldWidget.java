@@ -115,7 +115,7 @@ public class FieldWidget extends JPanel {
         public void mouseClicked(MouseEvent e) {
             int mouseX = e.getX(); // координата X в пикселях
             int mouseY = e.getY(); // координата Y в пикселях
-            System.out.println("Press Cell x: = " + mouseX + ", y: " + mouseY);
+
 
             // Определите координаты клетки, в которую было произведено нажатие мыши
             int matrixWidth = 4; // количество столбцов
@@ -131,15 +131,15 @@ public class FieldWidget extends JPanel {
             // Находим индексы ячейки в матрице
             int matrixX = (int) (mouseX / scaleX);
             int matrixY = (int) (mouseY / scaleY);
-
+            System.out.println("Press to x: " + matrixX + ", y: " + matrixY);
                 Point mousePoint = new Point(matrixX, matrixY);
                 Cell mouseCell = field.getCell(mousePoint);
                 Tile mouseTile = (Tile) mouseCell.getMobileCellObject();
 
                 // Перемещение костяшки в указанную клетку
-                mouseTile.move();
+            if (mouseTile !=null){mouseTile.move();}
 
-            System.out.println("наличие тайла в ячейке после "+ mouseCell.getMobileCellObject());
+            //System.out.println("наличие тайла в ячейке после "+ mouseCell.getMobileCellObject());
         }
 
         @Override

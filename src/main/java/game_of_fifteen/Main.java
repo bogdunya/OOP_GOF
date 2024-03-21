@@ -50,7 +50,7 @@ public class Main {
             JPanel content = (JPanel) this.getContentPane();
             content.removeAll();
             content.add(new FieldWidget(game.getGameField(), widgetFactory));
-            System.out.println(game.getTile());
+            //System.out.println(game.getTile());
             //System.out.println(widgetFactory.getWidget(game.getTile())); // ТУТ ВОЗМОЖНО НАДО БУДЕТ НАЧАЛЬНЫЙ ФОКУС КУДА-ТО ПРИКЛЕПАТЬ
             //widgetFactory.getWidget(game.getTile()).requestFocus();
 
@@ -83,13 +83,10 @@ public class Main {
                     String message = "";
                     switch (status) {
                         case WIN:
-                            message = "Выйграла коза";
+                            message = "Вы собрали пятнашки!";
                             break;
                         case GAME_ABORTED:
                             message= "Игра завершена досрочно";
-                            break;
-                        case GOAT_NOT_HAVE_MOVES:
-                            message = "У козы закончились ходы";
                             break;
                     }
                     String[] options = {"ok"};

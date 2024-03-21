@@ -18,7 +18,6 @@ public class Tile extends MobileCellObject {
      * Состояние активности козы.
      */
     private boolean isActive;
-    private int number;
     /**
      * Конструктор.
      * @param number порядковый номер костяшки
@@ -39,7 +38,7 @@ public class Tile extends MobileCellObject {
         Cell oldPosition = position;
         //System.out.println("наличие тайла в ячейке до "+ position.getMobileCellObject());
         Cell newPosition = canMove();
-        System.out.println("canMove: "+newPosition);
+        //System.out.println("canMove: "+newPosition);
         if (newPosition != null) {
             fireTileIsMoved(oldPosition, newPosition);
 
@@ -134,5 +133,5 @@ public class Tile extends MobileCellObject {
         }
     }
 
-    public int getNumber() {return this.number;}
+
 }

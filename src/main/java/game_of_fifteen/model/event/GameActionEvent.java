@@ -31,7 +31,6 @@ public class GameActionEvent extends EventObject {
 
     /**
      * Установить Костяшка.
-     * @param goat Костяшка.
      */
     public void setTile(@NotNull Tile tile) {
         this.tile = tile;

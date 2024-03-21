@@ -13,7 +13,7 @@ public abstract class FieldFormation {
      * @return поле.
      */
     public Field buildField() {
-        Field field = new Field(fieldWidth(), fieldHeight(), new Point(3, 3));
+        Field field = new Field(new Point(3, 3), 0);
 
         addTile(field);
 

@@ -15,11 +15,6 @@ public enum GameStatus {
     GAME_IS_ON,
 
     /**
-     * Коза больше не имеет ходов.
-     */
-    GOAT_NOT_HAVE_MOVES,
-
-    /**
      * Игра прервана.
      */
     GAME_ABORTED

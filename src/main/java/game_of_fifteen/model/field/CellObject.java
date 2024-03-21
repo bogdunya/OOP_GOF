@@ -10,7 +10,7 @@ public abstract class CellObject {
      * Позиция объекта.
      */
     protected Cell position;
-
+    protected int number;
     /**
      * Получить позицию объекта.
      * @return позиция объекта.
@@ -18,7 +18,7 @@ public abstract class CellObject {
     public Cell getPosition() {
         return position;
     }
-
+    public int getNumber() {return this.number;}
     /**
      * Установить позицию объекта.
      * @param position позиция.

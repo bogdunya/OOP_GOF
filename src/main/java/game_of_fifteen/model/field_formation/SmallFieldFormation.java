@@ -31,16 +31,48 @@ public class SmallFieldFormation extends FieldFormation {
     }
 
     protected void addTile(@NotNull Field field) {
+//        int tileValue = 1;
+//        for (int j = 0; j < 4; j++) {
+//            for (int i = 0; i < 4; i++) {
+//                if (tileValue <= 15) {
+//                    Tile tile = new Tile(tileValue);
+//                    field.getCell(new Point(i,j)).addObject(tile);
+//                    tileValue++;
+//                }
+//            }
+//        }
         int tileValue = 1;
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (tileValue <= 15) {
+        for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 4; i++) {
+                if (tileValue <= 8) {
                     Tile tile = new Tile(tileValue);
                     field.getCell(new Point(i,j)).addObject(tile);
                     tileValue++;
                 }
             }
         }
+        Tile tile = new Tile(10);
+        field.getCell(new Point(0,2)).addObject(tile);
+
+         tile = new Tile(13);
+        field.getCell(new Point(1,2)).addObject(tile);
+
+         tile = new Tile(11);
+        field.getCell(new Point(2,2)).addObject(tile);
+
+         tile = new Tile(12);
+        field.getCell(new Point(3,2)).addObject(tile);
+
+         tile = new Tile(9);
+        field.getCell(new Point(0,3)).addObject(tile);
+
+         tile = new Tile(14);
+        field.getCell(new Point(1,3)).addObject(tile);
+
+         tile = new Tile(15);
+        field.getCell(new Point(2,3)).addObject(tile);
+
+
     }
 
     @Override
