@@ -49,12 +49,16 @@ public class Main {
 
             JPanel content = (JPanel) this.getContentPane();
             content.removeAll();
+
             content.add(new FieldWidget(game.getGameField(), widgetFactory));
             //System.out.println(game.getTile());
             //System.out.println(widgetFactory.getWidget(game.getTile())); // ТУТ ВОЗМОЖНО НАДО БУДЕТ НАЧАЛЬНЫЙ ФОКУС КУДА-ТО ПРИКЛЕПАТЬ
-            //widgetFactory.getWidget(game.getTile()).requestFocus();
+            content.getComponent(0).requestFocus();
+
+
 
             pack();
+
         }
 
         private class NewGameAction extends AbstractAction {
@@ -79,22 +83,16 @@ public class Main {
             @Override
             public void gameStatusChanged(@NotNull GameActionEvent event) {
                 GameStatus status = event.getStatus();
-                if(status != GameStatus.GAME_IS_ON) {
-                    String message = "";
-                    switch (status) {
-                        case WIN:
-                            message = "Вы собрали пятнашки!";
-                            break;
-                        case GAME_ABORTED:
-                            message= "Игра завершена досрочно";
-                            break;
-                    }
-                    String[] options = {"ok"};
-                    int value = JOptionPane.showOptionDialog(GamePanel.this, message, "Игра окончена", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                    if(value == 0 || value == 1) {
-                        startGame();
-                        GamePanel.this.repaint();
-                    }
+                if (status == GameStatus.WIN) {
+                    // Запускаем диалоговое окно в отдельном потоке
+                    SwingUtilities.invokeLater(() -> {
+                        String message = "Вы собрали пятнашки!";
+                        String[] options = {"OK"};
+                        JOptionPane.showOptionDialog(GamePanel.this, message, "Игра окончена", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    });
+
+                    // Перерисовываем панель
+                    repaint();
                 }
             }
         }

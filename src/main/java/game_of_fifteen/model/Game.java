@@ -49,12 +49,10 @@ public class Game {
         //gameField.getTilesOnField().addTileActionListener(new TileObserver()); //Возможно это важная строчка!
         List<Tile> tiles = gameField.getTilesOnField();
         TileObserver observer = new TileObserver(); // Создайте экземпляр вашего слушателя
-
 // Добавьте слушателя к каждому объекту Tile в списке
         for (Tile tile : tiles) {
             tile.addTileActionListener(observer);
         }
-
     }
 
     /**
@@ -104,7 +102,7 @@ public class Game {
     /**
      * Обновить состояние игры.
      */
-    private void updateGameStatus() {
+    public void updateGameStatus() {
         GameStatus status = determineOutcomeGame();
         setStatus(status);
     }
@@ -173,8 +171,9 @@ public class Game {
     private class TileObserver implements TileActionListener {
         @Override
         public void tileIsMoved(@NotNull TileActionEvent event) {
+
             fireTileIsMoved(event.getTile());
-            updateGameStatus();
+
         }
 
         @Override
@@ -209,11 +208,13 @@ public class Game {
      */
 
     public void fireTileIsMoved(@NotNull Tile tile) {
+
         for (GameActionListener listener : gameActionListeners) {
             GameActionEvent event = new GameActionEvent(listener);
             event.setTile(tile);
             listener.tileIsMoved(event);
         }
+        updateGameStatus();
     }
 
     /**

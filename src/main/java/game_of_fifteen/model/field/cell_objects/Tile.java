@@ -34,20 +34,15 @@ public class Tile extends MobileCellObject {
 
     @Override
     public void move() {
-
         Cell oldPosition = position;
         //System.out.println("наличие тайла в ячейке до "+ position.getMobileCellObject());
         Cell newPosition = canMove();
         //System.out.println("canMove: "+newPosition);
         if (newPosition != null) {
-            fireTileIsMoved(oldPosition, newPosition);
-
             position.takeObject(position.getMobileCellObject());
             //System.out.println("№ пятнашки "+this.number);
-
             newPosition.addObject(this);
-
-
+            fireTileIsMoved(oldPosition, newPosition);
             //System.out.println("наличие тайла в новой ячейке после "+ newPosition.getMobileCellObject());
         }
     }
@@ -57,18 +52,18 @@ public class Tile extends MobileCellObject {
         Cell result = null;
         if (position.getNeighborCell(Direction.SOUTH)!=null && position.getNeighborCell(Direction.SOUTH).getMobileCellObject()==null) {
             Cell neighborCell = position.getNeighborCell(Direction.SOUTH);
-            return result = neighborCell;
+             result = neighborCell;
         } else if (position.getNeighborCell(Direction.NORTH)!=null && position.getNeighborCell(Direction.NORTH).getMobileCellObject()==null) {
             Cell neighborCell = position.getNeighborCell(Direction.NORTH);
-            return result = neighborCell;
+             result = neighborCell;
         } else if (position.getNeighborCell(Direction.WEST)!=null && position.getNeighborCell(Direction.WEST).getMobileCellObject()==null) {
             Cell neighborCell = position.getNeighborCell(Direction.WEST);
-            return result = neighborCell;
+             result = neighborCell;
         } else if (position.getNeighborCell(Direction.EAST)!=null && position.getNeighborCell(Direction.EAST).getMobileCellObject()==null) {
             Cell neighborCell = position.getNeighborCell(Direction.EAST);
-            return result = neighborCell;
-        } else return result;
-
+             result = neighborCell;
+        }
+        return result;
     }
 
 
@@ -104,7 +99,9 @@ public class Tile extends MobileCellObject {
     public void removeTileActionListener(TileActionListener listener) {
         tileListListener.remove(listener);
     }
+    private void fireMouseClick(){
 
+    }
     /**
      * Оповестить слушателей, что костяшка переместилась.
      *
@@ -120,18 +117,4 @@ public class Tile extends MobileCellObject {
             listener.tileIsMoved(event);
         }
     }
-
-
-    /**
-     * Оповестить слушателей, что состояние активности козы изменилось.
-     */ //Вообще это надо удалить, у костяшки нет активности!
-    private void fireTileChangeActive() {
-        for (TileActionListener listener : tileListListener) {
-            TileActionEvent event = new TileActionEvent(listener);
-            event.setTile(this);
-            listener.tileActivityChanged(event);
-        }
-    }
-
-
 }

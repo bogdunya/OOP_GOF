@@ -1,6 +1,7 @@
 package game_of_fifteen.ui;
 
 import game_of_fifteen.model.Direction;
+import game_of_fifteen.model.GameStatus;
 import game_of_fifteen.model.Orientation;
 import game_of_fifteen.model.Point;
 import game_of_fifteen.model.event.TileActionEvent;
@@ -99,10 +100,8 @@ public class FieldWidget extends JPanel {
             from.removeItem(tileWidget);
             to.addItem(tileWidget);
             tileWidget.repaint();
+
         }
-
-
-
         @Override
         public void tileActivityChanged(@NotNull TileActionEvent event) {
             Tile tile = event.getTile();
@@ -115,7 +114,6 @@ public class FieldWidget extends JPanel {
         public void mouseClicked(MouseEvent e) {
             int mouseX = e.getX(); // координата X в пикселях
             int mouseY = e.getY(); // координата Y в пикселях
-
 
             // Определите координаты клетки, в которую было произведено нажатие мыши
             int matrixWidth = 4; // количество столбцов
