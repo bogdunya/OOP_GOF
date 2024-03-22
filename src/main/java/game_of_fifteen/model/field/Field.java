@@ -62,6 +62,7 @@ public class Field {
                         break;
                     case 2:
                         //сюда дописать дописывать соседей для типа игры 2
+                        if(x==width-1 && y==height-1) cell.setNeighborCells(getCell(new Point(0,0)), Direction.EAST);
                         break;
                 }
                 cells.put(p, cell);
