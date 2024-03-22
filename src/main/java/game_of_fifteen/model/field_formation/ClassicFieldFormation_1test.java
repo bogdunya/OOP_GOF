@@ -6,16 +6,17 @@ import game_of_fifteen.model.field.cell_objects.Tile;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Лабиринт маленького поля.
+ * Тестовое поле с почти решенными пятнашками
  */
 public class ClassicFieldFormation_1test extends FieldFormation {
+
     /**
-     * Высота поля.
+     * Высота поля
      */
     private static final int FIELD_HEIGHT = 4;
 
     /**
-     * Ширина поля.
+     * Ширина поля
      */
     private static final int FIELD_WIDTH = 4;
 

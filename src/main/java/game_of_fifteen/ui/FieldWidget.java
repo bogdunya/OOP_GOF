@@ -1,7 +1,6 @@
 package game_of_fifteen.ui;
 
 import game_of_fifteen.model.Direction;
-import game_of_fifteen.model.GameStatus;
 import game_of_fifteen.model.Orientation;
 import game_of_fifteen.model.Point;
 import game_of_fifteen.model.event.TileActionEvent;
@@ -27,7 +26,7 @@ public class FieldWidget extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         fillField();
         addMouseListener(new MouseController());
-        subscribeOnRobots();
+        subscribeOnTiles();
     }
 
     private void fillField() {
@@ -58,11 +57,8 @@ public class FieldWidget extends JPanel {
                 BetweenCellsWidget westCellWidget = new BetweenCellsWidget(Orientation.VERTICAL);
                 row.add(westCellWidget);
             }
-
             row.add(cellWidget);
-
             BetweenCellsWidget eastCellWidget = new BetweenCellsWidget(Orientation.VERTICAL);
-
             row.add(eastCellWidget);
         }
         return row;
@@ -76,15 +72,13 @@ public class FieldWidget extends JPanel {
         for (int i = 0; i < field.getWidth(); ++i) {
             Point point = new Point(i, rowIndex);
             Cell cell = field.getCell(point);
-
             BetweenCellsWidget southCellWidget = new BetweenCellsWidget(Orientation.HORIZONTAL);
-
             row.add(southCellWidget);
         }
         return row;
     }
 
-    private void subscribeOnRobots() {
+    private void subscribeOnTiles() {
         List<Tile> tiles = field.getTilesOnField();
         for(var i : tiles) {
             i.addTileActionListener(new TileController());
@@ -102,12 +96,6 @@ public class FieldWidget extends JPanel {
             tileWidget.repaint();
 
         }
-        @Override
-        public void tileActivityChanged(@NotNull TileActionEvent event) {
-            Tile tile = event.getTile();
-            TileWidget tileWidget = (TileWidget) widgetFactory.getWidget(tile);
-            tileWidget.setActive(tile.isActive());
-        }
     }
     public class MouseController implements MouseListener {
         @Override
@@ -115,7 +103,7 @@ public class FieldWidget extends JPanel {
             int mouseX = e.getX(); // координата X в пикселях
             int mouseY = e.getY(); // координата Y в пикселях
 
-            // Определите координаты клетки, в которую было произведено нажатие мыши
+            // Определить координаты клетки, в которую было произведено нажатие мыши
             int matrixWidth = 4; // количество столбцов
             int matrixHeight = 4; // количество строк
 
@@ -130,53 +118,26 @@ public class FieldWidget extends JPanel {
             int matrixX = (int) (mouseX / scaleX);
             int matrixY = (int) (mouseY / scaleY);
             System.out.println("Press to x: " + matrixX + ", y: " + matrixY);
-                Point mousePoint = new Point(matrixX, matrixY);
-                Cell mouseCell = field.getCell(mousePoint);
-                Tile mouseTile = (Tile) mouseCell.getMobileCellObject();
+            Point mousePoint = new Point(matrixX, matrixY);
+            Cell mouseCell = field.getCell(mousePoint);
+            Tile mouseTile = (Tile) mouseCell.getMobileCellObject();
 
-                // Перемещение костяшки в указанную клетку
+            // Перемещение костяшки в указанную клетку
             if (mouseTile !=null){mouseTile.move();}
 
             //System.out.println("наличие тайла в ячейке после "+ mouseCell.getMobileCellObject());
         }
-
         @Override
         public void mousePressed(MouseEvent arg0) {
-
         }
-
         @Override
         public void mouseReleased(MouseEvent arg0) {
-
         }
-
         @Override
         public void mouseEntered(MouseEvent arg0) {
-
         }
-
         @Override
         public void mouseExited(MouseEvent e) {
-
         }
     }
-
-
-//        private void moveTile(int cellX, int cellY) {
-//            // Получите костяшку, которая находится в указанной клетке
-//            Tile tile = getTileAt(cellX, cellY);
-//
-//            // Проверяем, если клетка пуста и костяшка может быть перемещена
-//            if (tile != null && tile.canMove()) {
-//                // Перемещаем костяшку
-//                tile.move();
-//            }
-//        }
-//
-//        private Tile getTileAt(int cellX, int cellY) {
-//            // Получите объект клетки по ее координатам cellX и cellY
-//            // Верните костяшку, которая находится в этой клетке
-//            return
-//        }
-
 }

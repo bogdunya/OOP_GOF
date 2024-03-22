@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Лабиринт маленького поля.
+ * Поле с почти решенными пятнашками
  */
 public class ClassicFieldFormationRandom extends FieldFormation {
     /**

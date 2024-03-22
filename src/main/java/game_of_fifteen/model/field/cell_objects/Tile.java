@@ -10,23 +10,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 /**
- * Коза.
+ * Класс Костяшка
  */
 public class Tile extends MobileCellObject {
 
     /**
-     * Состояние активности козы.
-     */
-    private boolean isActive;
-    /**
-     * Конструктор.
+     * Конструктор
      * @param number порядковый номер костяшки
      */
     public Tile(@NotNull int number) {
         this.number = number;
     }
 
-    // Тут проверить все 4 стороны света вокруг костяшки, шоб она сама проверяла куда ей идти
     @Override
     public boolean canLocaleAtPosition(@NotNull Cell newPosition) {
         return newPosition.getMobileCellObject() == null || newPosition.getMobileCellObject() instanceof Tile;
@@ -67,23 +62,13 @@ public class Tile extends MobileCellObject {
     }
 
 
-
     /**
-     * Получить состояние активности костяшки.
-     *
-     * @return состояние активности костяшки.
-     */
-    public boolean isActive() {
-        return isActive;
-    }
-
-    /**
-     * Список слушателей, подписанныз на события костяшки.
+     * Список слушателей события костяшек
      */
     private final ArrayList<TileActionListener> tileListListener = new ArrayList<>();
 
     /**
-     * Добавить нового слушателя за событиями костяшки.
+     * Добавить нового слушателя за событиями костяшки
      *
      * @param listener слушатель.
      */
@@ -100,13 +85,12 @@ public class Tile extends MobileCellObject {
         tileListListener.remove(listener);
     }
     private void fireMouseClick(){
-
     }
     /**
-     * Оповестить слушателей, что костяшка переместилась.
+     * Оповестить слушателей, что костяшка переместилась
      *
-     * @param oldPosition ячейка откуда переместилась козы.
-     * @param newPosition ячейка куда переместилась козы.
+     * @param oldPosition ячейка откуда переместилась костяшка
+     * @param newPosition ячейка куда переместилась костяшка
      */
     private void fireTileIsMoved(@NotNull Cell oldPosition, @NotNull Cell newPosition) {
         for (TileActionListener listener : tileListListener) {

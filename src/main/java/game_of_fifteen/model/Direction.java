@@ -1,31 +1,31 @@
 package game_of_fifteen.model;
 
 /**
- * Направления.
+ * Направления
  */
 public enum Direction {
     /**
-     * Север.
+     * Север
      */
     NORTH,
 
     /**
-     * Юг.
+     * Юг
      */
     SOUTH,
 
     /**
-     * Запад.
+     * Запад
      */
     WEST,
 
     /**
-     * Восток.
+     * Восток
      */
     EAST;
 
     /**
-     * Противоположное направление.
+     * Противоположное направление
      */
     private Direction opposite;
 
@@ -37,8 +37,8 @@ public enum Direction {
     }
 
     /**
-     * Получить противоположное направление.
-     * @return противоположное направление.
+     * Получить противоположное направление
+     * @return противоположное направление
      */
     public Direction getOppositeDirection() {
         return opposite;

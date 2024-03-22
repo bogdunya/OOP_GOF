@@ -5,36 +5,35 @@ import game_of_fifteen.model.field.Field;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Лабиринт.
+ * Создатель поля
  */
 public abstract class FieldFormation {
+
     /**
-     * Построить поле.
-     * @return поле.
+     * Построить поле
+     * Задать параметры типа игры 0-классика, 1-нет боковых стен
+     * @return поле
      */
     public Field buildField() {
         Field field = new Field(1);
-
         addTile(field);
-
-
         return field;
     }
 
     /**
-     * Высота поля.
-     * @return высота поля.
+     * Высота поля
+     * @return высота поля
      */
     protected abstract int fieldHeight();
 
     /**
-     * Ширина поля.
-     * @return ширина поля.
+     * Ширина поля
+     * @return ширина поля
      */
     protected abstract int fieldWidth();
 
     /**
-     * Добавить костяшку и стены на поле.
+     * Добавить костяшку и стены на поле
      */
     protected abstract void addTile(@NotNull Field field);
 

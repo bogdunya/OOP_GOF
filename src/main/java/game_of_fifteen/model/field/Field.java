@@ -8,25 +8,23 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 /**
- * Поле.
+ * Поле
  */
 public class Field {
     /**
-     * Ячейки поля.
+     * Ячейки поля
      */
     private final Map<Point, Cell> cells = new HashMap<>();
 
     /**
-     * Ширина поля.
+     * Ширина поля
      */
     private final int width = 4;
 
     /**
-     * Высота поля.
+     * Высота поля
      */
     private final int height = 4;
-
-//    private final Gabbage gabbage;
 
     /**
      * Конструктор
@@ -38,22 +36,20 @@ public class Field {
     }
 
     /**
-     * Построить игровое поле.
+     * Построить игровое поле
      */
     private void buildField(int typeOfField) {
-
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
                 Point p = new Point(x, y);
                 Cell cell = new Cell();
                 if (x > 0) cell.setNeighborCells(getCell(p.to(Direction.WEST, 1)), Direction.WEST);
                 if (y > 0) cell.setNeighborCells(getCell(p.to(Direction.NORTH, 1)), Direction.NORTH);
-
                 cells.put(p, cell);
-
             }
         }
 
+        //Сработает в случае доп. условий для игры(не классических)
         for (int y = 0; y < height; ++y) {
             for (int x = 0; x < width; ++x) {
                 Point p = new Point(x, y);
@@ -75,39 +71,34 @@ public class Field {
     }
 
     /**
-     * Получить ширину поля.
-     *
-     * @return ширина поля.
+     * Получить ширину поля
+     * @return ширина поля
      */
     public int getWidth() {
         return width;
     }
 
     /**
-     * Получить высоту поля.
-     *
-     * @return высота поля.
+     * Получить высоту поля
+     * @return высота поля
      */
     public int getHeight() {
         return height;
     }
 
     /**
-     * Получить ячейку по заданной координате.
-     *
-     * @param point координата.
-     * @return ячейка.
+     * Получить ячейку по заданной координате
+     * @param point координата
+     * @return ячейка
      */
     public Cell getCell(@NotNull Point point) {
         return cells.get(point);
     }
 
     /**
-     * Получить козу на поле.
-     *
-     * @return коза на поле.
+     * Получить костяшки на поле
+     * @return список костяшек на поле
      */
-
     public List<Tile> getTilesOnField() {
         List<Tile> result = new ArrayList<>();
         for (var i : cells.entrySet()) {
@@ -130,9 +121,7 @@ public class Field {
         return width == field.width &&
                 height == field.height &&
                 Objects.equals(cells, field.cells);
-//                Objects.equals(gabbage, field.gabbage);
     }
-
     @Override
     public String toString() {
         return "Field{" +

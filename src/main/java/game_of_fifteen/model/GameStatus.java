@@ -1,7 +1,7 @@
 package game_of_fifteen.model;
 
 /**
- * Статус игры.
+ * Статус игры
  */
 public enum GameStatus {
     /**
@@ -10,12 +10,12 @@ public enum GameStatus {
     WIN,
 
     /**
-     * Игра идёт.
+     * Игра идёт
      */
     GAME_IS_ON,
 
     /**
-     * Игра прервана.
+     * Игра прервана
      */
     GAME_ABORTED
 }

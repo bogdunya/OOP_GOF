@@ -27,16 +27,14 @@ public class Main {
             setVisible(true);
             startGame();
             setResizable(false);
-
             JMenuBar menuBar = new JMenuBar();
             menuBar.add(createGameMenu());
             setJMenuBar(menuBar);
-
             setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
 
         private JMenu createGameMenu() {
-            JMenu gameMenu = new JMenu("Игра");
+            JMenu gameMenu = new JMenu("ПЯТНАШКИ");
             JMenuItem newGameMenuItem = new JMenuItem(new NewGameAction());
             gameMenu.add(newGameMenuItem);
             return gameMenu;
@@ -44,33 +42,24 @@ public class Main {
 
         private void startGame() {
             widgetFactory = new WidgetFactory();
-            game = new Game(new ClassicFieldFormationRandom());
-
+            game = new Game(new ClassicFieldFormation_1test());
             game.addGameActionListener(new GameController());
-
             JPanel content = (JPanel) this.getContentPane();
             content.removeAll();
-
             content.add(new FieldWidget(game.getGameField(), widgetFactory));
-            //System.out.println(game.getTile());
-            //System.out.println(widgetFactory.getWidget(game.getTile())); // ТУТ ВОЗМОЖНО НАДО БУДЕТ НАЧАЛЬНЫЙ ФОКУС КУДА-ТО ПРИКЛЕПАТЬ
             content.getComponent(0).requestFocus();
-
-
-
             pack();
-
         }
 
         private class NewGameAction extends AbstractAction {
             public NewGameAction() {
-                putValue(NAME, "Новая");
+                putValue(NAME, "НОВАЯ ИГРА");
             }
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 int result = JOptionPane.showConfirmDialog(GamePanel.this,
-                        "Начать новую игру?", "Новая игра",JOptionPane.YES_NO_OPTION);
+                        "НАЧАТЬ ЗАНОВО?", "НОВАЯ ИГРА",JOptionPane.YES_NO_OPTION);
                 if(result == JOptionPane.YES_OPTION) startGame();
             }
         }
@@ -87,9 +76,9 @@ public class Main {
                 if (status == GameStatus.WIN) {
                     // Запускаем диалоговое окно в отдельном потоке
                     SwingUtilities.invokeLater(() -> {
-                        String message = "Вы собрали пятнашки!";
-                        String[] options = {"OK"};
-                        int result = JOptionPane.showOptionDialog(GamePanel.this, message, "Игра окончена", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                        String message = "ВЫ СОБРАЛИ ПЯТНАШКИ!";
+                        String[] options = {"OKЕЙ"};
+                        int result = JOptionPane.showOptionDialog(GamePanel.this, message, "КОНЕЦ", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                         // Проверяем, нажата ли кнопка "OK"
                         if (result == 0) {
                             startGame();

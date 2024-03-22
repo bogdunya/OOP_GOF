@@ -6,11 +6,11 @@ import java.awt.image.BufferedImage;
 import game_of_fifteen.ui.cell.CellWidget.Layer;
 
 /**
- * Виджет объекта для виджета ячейки.
+ * Виджет объекта для виджета ячейки
  */
 public abstract class CellItemWidget extends JPanel {
     /**
-     * Конструктор.
+     * Конструктор
      */
     public CellItemWidget() {
         setState(State.DEFAULT);
@@ -18,28 +18,28 @@ public abstract class CellItemWidget extends JPanel {
     }
 
     /**
-     * Состояние виджета.
+     * Состояние виджета
      */
     public enum State {
         /**
-         * Обычный.
+         * Обычный
          */
         DEFAULT,
 
         /**
-         * Маленький.
+         * Маленький
          */
         SMALL
     }
 
     /**
-     * Состояние виджета.
+     * Состояние виджета
      */
     protected State cellItemState = State.DEFAULT;
 
     /**
-     * Установить состояние виджета.
-     * @param state состояние виджета.
+     * Установить состояние виджета
+     * @param state состояние виджета
      */
     void setState(State state) {
         cellItemState = state;
@@ -49,28 +49,28 @@ public abstract class CellItemWidget extends JPanel {
     }
 
     /**
-     * Получить состояние виджета.
-     * @return состояние виджета.
+     * Получить состояние виджета
+     * @return состояние виджета
      */
     public State getState() {
         return cellItemState;
     }
 
     /**
-     * Получить изображение виджета.
-     * @return изображение виджета.
+     * Получить изображение виджета
+     * @return изображение виджета
      */
     protected abstract BufferedImage getImage();
 
     /**
-     * Получить слой на котором располагается виджет.
-     * @return слой на котором располагается виджет.
+     * Получить слой на котором располагается виджет
+     * @return слой на котором располагается виджет
      */
     public abstract Layer getLayer();
 
     /**
-     * Получить размеры виджета.
-     * @return размеры виджета.
+     * Получить размеры виджета
+     * @return размеры виджета
      */
     protected abstract Dimension getDimension();
 

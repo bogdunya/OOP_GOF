@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.EventObject;
 
 /**
- * Объект события класса коза.
+ * Объект события Костяшка
  */
 public class TileActionEvent extends EventObject {
     /**
@@ -26,25 +26,23 @@ public class TileActionEvent extends EventObject {
     private Cell toCell;
 
     /**
-     * Конструктор объекта события класса костяшка.
-     * @param source the object on which the Event initially occurred
-     * @throws IllegalArgumentException if source is null
+     * Конструктор объекта события костяшка
      */
     public TileActionEvent(Object source) {
         super(source);
     }
 
     /**
-     * Установить ячейку откуда переместилась костяшка.
-     * @param fromCell ячейка откуда переместилась костяшка.
+     * Установить ячейку откуда переместилась костяшка
+     * @param fromCell ячейка откуда переместилась костяшка
      */
     public void setFromCell(Cell fromCell) {
         this.fromCell = fromCell;
     }
 
     /**
-     * Получить ячейку откуда переместилась костяшка.
-     * @return ячейка откуда переместилась костяшка.
+     * Получить ячейку откуда переместилась костяшка
+     * @return ячейка откуда переместилась костяшка
      */
     public Cell getFromCell() {
         return fromCell;
@@ -67,16 +65,16 @@ public class TileActionEvent extends EventObject {
     }
 
     /**
-     * Установить костяшку.
-     * @param tile костяшка.
+     * Установить костяшку
+     * @param tile костяшка
      */
     public void setTile(@NotNull Tile tile) {
         this.tile = tile;
     }
 
     /**
-     * Получить коcтяшку.
-     * @return костяшку.
+     * Получить коcтяшку
+     * @return костяшка
      */
     public Tile getTile() {
         return tile;

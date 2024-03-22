@@ -6,18 +6,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.*;
 
 /**
- * Ячейка.
+ * Ячейка
  */
 public class Cell {
     /**
-     * Объекты, расположенные в ячейке.
+     * Объекты, расположенные в ячейке
      */
     protected List<CellObject> objectList = new ArrayList<>();
-    private int row;
-    private int col;
+
     /**
-     * Добавить объект в ячейку.
-     * @param cellObject объект, добавляемый в ячейку.
+     * Добавить объект в ячейку
+     * @param cellObject объект, добавляемый в ячейку
      */
     public void addObject(@NotNull CellObject cellObject) {
         boolean isPositionSetSuccess = cellObject.setPosition(this);
@@ -26,9 +25,9 @@ public class Cell {
     }
 
     /**
-     * Изъять объект из ячейки.
-     * @param cellObject запрашиваемый объект.
-     * @return запрашиваемый объект. null - если объект не содержится в ячейке.
+     * Изъять объект из ячейки
+     * @param cellObject запрашиваемый объект
+     * @return запрашиваемый объект. null - если объект не содержится в ячейке
      */
     public MobileCellObject takeObject(MobileCellObject cellObject) {
         MobileCellObject result = null;
@@ -41,8 +40,8 @@ public class Cell {
     }
 
     /**
-     * Получить перемещаемый объект ячейки.
-     * @return перемещаемый объект ячейки.
+     * Получить перемещаемый объект ячейки
+     * @return перемещаемый объект ячейки
      */
     public MobileCellObject getMobileCellObject() {
         return (MobileCellObject) objectList.stream().filter(i -> i instanceof MobileCellObject).findFirst().orElse(null);
@@ -53,7 +52,7 @@ public class Cell {
     }
 
     /**
-     * Соседние ячейки.
+     * Соседние ячейки
      */
     private final Map<Direction, Cell> neighborCells = new EnumMap<>(Direction.class);
 
@@ -66,16 +65,16 @@ public class Cell {
     }
 
     /**
-     * Получить соседнюю ячейку в заданном направлении.
-     * @param direction направление.
-     * @return соседняя ячейка. null, если в заданном направлении нет соседней ячейки.
+     * Получить соседнюю ячейку в заданном направлении
+     * @param direction направление
+     * @return соседняя ячейка. null, если в заданном направлении нет соседней ячейки
      */
     public Cell getNeighborCell(@NotNull Direction direction) {
         return neighborCells.get(direction);
     }
 
     /**
-     * Установить ячейку соседней.
+     * Установить ячейку соседней
      */
     void setNeighborCells(@NotNull Cell neighborCell, @NotNull Direction direction) {
         neighborCells.put(direction, neighborCell);
@@ -85,9 +84,9 @@ public class Cell {
     }
 
     /**
-     * Получить направление с соседней ячейкой.
-     * @param other соседняя ячейка.
-     * @return направление.
+     * Получить направление с соседней ячейкой
+     * @param other соседняя ячейка
+     * @return направление
      */
     public Direction getNeighnborDirection(@NotNull Cell other) {
         for (var i : neighborCells.entrySet()) {

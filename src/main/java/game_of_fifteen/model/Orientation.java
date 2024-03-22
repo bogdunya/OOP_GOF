@@ -1,16 +1,16 @@
 package game_of_fifteen.model;
 
 /**
- * Ориентация.
+ * Ориентация
  */
 public enum Orientation {
     /**
-     * Вертикальная.
+     * Вертикальная
      */
     VERTICAL,
 
     /**
-     * Горизонтальная.
+     * Горизонтальная
      */
     HORIZONTAL
 }

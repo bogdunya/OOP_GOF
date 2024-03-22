@@ -11,32 +11,26 @@ import java.util.EventObject;
  */
 public class GameActionEvent extends EventObject {
     /**
-     * Костяшка.
+     * Костяшка
      */
     private Tile tile;
     /**
-     * Статус игры.
+     * Статус игры
      */
     private GameStatus status;
 
-    /**
-     * Constructs a prototypical Event.
-     *
-     * @param source the object on which the Event initially occurred
-     * @throws IllegalArgumentException if source is null
-     */
     public GameActionEvent(Object source) {
         super(source);
     }
 
     /**
-     * Установить Костяшка.
+     * Установить Костяшку
      */
     public void setTile(@NotNull Tile tile) {
         this.tile = tile;
     }
     /**
-     * Установить статус игры.
+     * Установить статус игры
      * @param status статус игры.
      */
     public void setStatus(GameStatus status) {
@@ -44,16 +38,16 @@ public class GameActionEvent extends EventObject {
     }
 
     /**
-     * Получить Костяшка.
-     * @return Костяшка.
+     * Получить Костяшку
+     * @return Костяшка
      */
     public Tile getTile() {
         return tile;
     }
 
     /**
-     * Получить статус игры.
-     * @return статус игры.
+     * Получить статус игры
+     * @return статус игры
      */
     public GameStatus getStatus() {
         return status;

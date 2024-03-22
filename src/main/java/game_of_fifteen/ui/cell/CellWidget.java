@@ -8,22 +8,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Виджет ячейки.
+ * Виджет ячейки
  * @see game_of_fifteen.model.field.Cell
  */
 public class CellWidget extends JPanel {
 
     /**
-     * Слой.
+     * Слой
      */
     public enum Layer {
         /**
-         * Верхний.
+         * Верхний
          */
         TOP,
 
         /**
-         * Нижний.
+         * Нижний
          */
         BOTTOM
     }
@@ -31,12 +31,12 @@ public class CellWidget extends JPanel {
     private final Map<Layer, CellItemWidget> items = new HashMap<>();
 
     /**
-     * Размер виджета ячейки.
+     * Размер виджета ячейки
      */
     private static final int CELL_SIZE = 150;
 
     /**
-     * Конструтор.
+     * Конструтор
      */
     public CellWidget() {
         setPreferredSize(new Dimension(CELL_SIZE, CELL_SIZE));
@@ -44,9 +44,9 @@ public class CellWidget extends JPanel {
     }
 
     /**
-     * Добавить элемент в виджет ячейки.
-     * @param item виджет объекта для ячейки.
-     * @throws IllegalArgumentException если объектов добалвяется больше 2.
+     * Добавить элемент в виджет ячейки
+     * @param item виджет объекта для ячейки
+     * @throws IllegalArgumentException если объектов добалвяется больше 2
      */
     public void addItem(CellItemWidget item) {
         if(items.size() > 2) throw new IllegalArgumentException();
@@ -69,8 +69,8 @@ public class CellWidget extends JPanel {
     }
 
     /**
-     * Удалить виджет из ячейки.
-     * @param item удаляемый виджет.
+     * Удалить виджет из ячейки
+     * @param item удаляемый виджет
      */
     public void removeItem(CellItemWidget item) {
         if (items.containsValue(item)) {

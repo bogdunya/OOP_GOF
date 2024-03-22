@@ -1,6 +1,11 @@
 package game_of_fifteen.ui.cell;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
 import game_of_fifteen.model.Orientation;
+import game_of_fifteen.ui.cell.CellWidget.Layer;
 import game_of_fifteen.ui.utils.ImageUtils;
 
 import javax.imageio.ImageIO;

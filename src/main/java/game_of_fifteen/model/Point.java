@@ -5,17 +5,17 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * Точка-координат на игровом поле.
+ * Класс точки с координатами
  */
 public class Point {
 
     /**
-     * Координата X.
+     * Координата X
      */
     private final int x;
 
     /**
-     * Координата Y.
+     * Координата Y
      */
     private final int y;
 
@@ -25,16 +25,16 @@ public class Point {
     }
 
     /**
-     * Получить координату X.
-     * @return координата X.
+     * Получить координату X
+     * @return координата X
      */
     public int getX() {
         return this.x;
     }
 
     /**
-     * Получить координату Y.
-     * @return координата Y.
+     * Получить координату Y
+     * @return координата Y
      */
     public int getY() {
         return y;

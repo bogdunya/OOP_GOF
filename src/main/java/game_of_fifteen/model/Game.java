@@ -174,11 +174,6 @@ public class Game {
             fireTileIsMoved(event.getTile());
 
         }
-
-        @Override
-        public void tileActivityChanged(@NotNull TileActionEvent event) {
-            // Not implemented yet
-        }
     }
 
     /**

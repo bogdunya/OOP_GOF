@@ -9,7 +9,7 @@ import java.util.EventListener;
  */
 public interface GameActionListener extends EventListener {
     /**
-     * Робот переместился.
+     * Костяшка переместилась
      * @param event объект события класса игры.
      */
     void tileIsMoved(@NotNull GameActionEvent event);

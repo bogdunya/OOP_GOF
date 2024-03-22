@@ -1,17 +1,17 @@
 package game_of_fifteen.model.field;
 
 /**
- * Перемещаемый объект ячейки.
+ * Объект, способный перемещаться
  */
 public abstract class MobileCellObject extends CellObject{
+
     /**
-     * Переместить объект в заданном направлении.
+     * Переместить объект
      */
     public abstract void move();
 
     /**
-     * Может ли объект переместиться в заданном направлении.
-     * @return соседнюю ячейку, если объект может переместиться в заданном направлении. Иначе null
+     * Может ли объект переместиться в заданном направлении
      */
     protected abstract Cell canMove();
 }
